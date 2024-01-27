@@ -1,0 +1,87 @@
+current directory: /media/i-nad/463E0FE91969CB521/docs/module-8/ruby_take_home_challenge/vendor/bundle/ruby/3.1.0/gems/nio4r-2.3.1/ext/nio4r
+/usr/bin/ruby3.1 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20240127-16730-aizdau.rb extconf.rb
+checking for unistd.h... yes
+checking for sys/select.h... yes
+checking for port_event_t in poll.h... no
+checking for sys/epoll.h... yes
+checking for sys/event.h... no
+checking for port_event_t in port.h... no
+checking for sys/resource.h... yes
+creating Makefile
+
+current directory: /media/i-nad/463E0FE91969CB521/docs/module-8/ruby_take_home_challenge/vendor/bundle/ruby/3.1.0/gems/nio4r-2.3.1/ext/nio4r
+make DESTDIR\= clean
+
+current directory: /media/i-nad/463E0FE91969CB521/docs/module-8/ruby_take_home_challenge/vendor/bundle/ruby/3.1.0/gems/nio4r-2.3.1/ext/nio4r
+make DESTDIR\=
+compiling bytebuffer.c
+compiling monitor.c
+compiling nio4r_ext.c
+In file included from nio4r_ext.c:7:
+../libev/ev.c:1836:31: warning: ‘ev_default_loop_ptr’ initialized and declared ‘extern’
+ 1836 |   EV_API_DECL struct ev_loop *ev_default_loop_ptr = 0; /* needs to be initialised to make it a definition despite extern */
+      |                               ^~~~~~~~~~~~~~~~~~~
+../libev/ev.c: In function ‘ev_run’:
+../libev/ev.c:3750:36: warning: passing argument 1 of ‘rb_thread_call_without_gvl’ from incompatible pointer type [-Wincompatible-pointer-types]
+ 3750 |         rb_thread_call_without_gvl(ev_backend_poll, (void *)&poll_args, RUBY_UBF_IO, 0);
+      |                                    ^~~~~~~~~~~~~~~
+      |                                    |
+      |                                    VALUE (*)(void *) {aka long unsigned int (*)(void *)}
+In file included from ../libev/ev.c:42:
+/usr/include/ruby-3.1.0/ruby/thread.h:130:42: note: expected ‘void * (*)(void *)’ but argument is of type ‘VALUE (*)(void *)’ {aka ‘long unsigned int (*)(void *)’}
+  130 | void *rb_thread_call_without_gvl(void *(*func)(void *), void *data1,
+      |                                  ~~~~~~~~^~~~~~~~~~~~~
+In file included from /usr/include/ruby-3.1.0/ruby/defines.h:71,
+                 from /usr/include/ruby-3.1.0/ruby/ruby.h:25,
+                 from /usr/include/ruby-3.1.0/ruby.h:38,
+                 from nio4r.h:9,
+                 from nio4r_ext.c:6:
+nio4r_ext.c: In function ‘Init_nio4r_ext’:
+/usr/include/ruby-3.1.0/ruby/internal/xmalloc.h:56:19: warning: passing argument 1 of ‘ev_set_allocator’ from incompatible pointer type [-Wincompatible-pointer-types]
+   56 | #define xrealloc  ruby_xrealloc  /**< @old{ruby_xrealloc} */
+      |                   ^~~~~~~~~~~~~
+      |                   |
+      |                   void * (*)(void *, size_t) {aka void * (*)(void *, long unsigned int)}
+nio4r_ext.c:15:22: note: in expansion of macro ‘xrealloc’
+   15 |     ev_set_allocator(xrealloc);
+      |                      ^~~~~~~~
+../libev/ev.c:1738:27: note: expected ‘void * (*)(void *, long int)’ but argument is of type ‘void * (*)(void *, size_t)’ {aka ‘void * (*)(void *, long unsigned int)’}
+ 1738 | ev_set_allocator (void *(*cb)(void *ptr, long size) EV_THROW) EV_THROW
+      |                   ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
+../libev/ev.c: In function ‘evpipe_write’:
+../libev/ev.c:2473:11: warning: ignoring return value of ‘write’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+ 2473 |           write (evpipe [1], &counter, sizeof (uint64_t));
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../libev/ev.c:2485:11: warning: ignoring return value of ‘write’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+ 2485 |           write (evpipe [1], &(evpipe [1]), 1);
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../libev/ev.c: In function ‘pipecb’:
+../libev/ev.c:2506:11: warning: ignoring return value of ‘read’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+ 2506 |           read (evpipe [1], &counter, sizeof (uint64_t));
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../libev/ev.c:2520:11: warning: ignoring return value of ‘read’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+ 2520 |           read (evpipe [0], &dummy, sizeof (dummy));
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compiling selector.c
+selector.c: In function ‘NIO_Selector_synchronize’:
+selector.c:286:26: warning: passing argument 1 of ‘rb_ensure’ from incompatible pointer type [-Wincompatible-pointer-types]
+  286 |         return rb_ensure(func, (VALUE)args, NIO_Selector_unlock, self);
+      |                          ^~~~
+      |                          |
+      |                          VALUE (*)(VALUE *) {aka long unsigned int (*)(long unsigned int *)}
+In file included from /usr/include/ruby-3.1.0/ruby/ruby.h:40,
+                 from /usr/include/ruby-3.1.0/ruby.h:38,
+                 from nio4r.h:9,
+                 from selector.c:6:
+/usr/include/ruby-3.1.0/ruby/internal/iterator.h:425:25: note: expected ‘VALUE (*)(VALUE)’ {aka ‘long unsigned int (*)(long unsigned int)’} but argument is of type ‘VALUE (*)(VALUE *)’ {aka ‘long unsigned int (*)(long unsigned int *)’}
+  425 | VALUE rb_ensure(VALUE (*b_proc)(VALUE), VALUE data1, VALUE (*e_proc)(VALUE), VALUE data2);
+      |                 ~~~~~~~~^~~~~~~~~~~~~~
+selector.c: In function ‘NIO_Selector_wakeup’:
+selector.c:484:5: warning: ignoring return value of ‘write’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  484 |     write(selector->wakeup_writer, "\0", 1);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+linking shared-object nio4r_ext.so
+
+current directory: /media/i-nad/463E0FE91969CB521/docs/module-8/ruby_take_home_challenge/vendor/bundle/ruby/3.1.0/gems/nio4r-2.3.1/ext/nio4r
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 nio4r_ext.so ./.gem.20240127-16730-w42k99
